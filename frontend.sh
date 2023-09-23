@@ -1,3 +1,4 @@
+echo Installing Nginx
 dnf install nginx -y
 cp expence.conf /etc/nginx/default.d/expence.conf
 
