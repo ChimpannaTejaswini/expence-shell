@@ -5,7 +5,7 @@ echo Placing Expence Confing File in Nginx
 cp expence.conf /etc/nginx/default.d/expence.conf
 
 echo Removing Old Nginx content
-rm -rf /usr/share/nginx/html/
+rm -rf /usr/share/nginx/html/*
 
 
 echo Download Frontend code
