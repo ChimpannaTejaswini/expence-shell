@@ -1,14 +1,21 @@
 echo Installing Nginx
-dnf install nginx -y
-cp expence.conf /etc/nginx/default.d/expence.conf
+dnf install nginx -y >/tmp/expence.log
 
-systemctl enable nginx
-systemctl start nginx
-rm -rf /usr/share/nginx/html/*
+echo Placing Expense Confing File in Nginx
+cp expence.conf /etc/nginx/default.d/expence.conf>/tmp/expence.log
 
-curl -o /tmp/frontend.zip https://expense-artifacts.s3.amazonaws.com/frontend.zip
+echo Removing Old Nginx content
+rm -rf /usr/share/nginx/html/>/tmp/expence.log
+
+
+echo Download Frontend code
+curl -o /tmp/frontend.zip https://expense-artifacts.s3.amazonaws.com/frontend.zip>/tmp/expence.log
 
 cd /usr/share/nginx/html
-unzip /tmp/frontend.zip
 
-systemctl restart nginx
+echo Extracting Frontend Code
+unzip /tmp/frontend.zip>/tmp/expence.log
+
+echo Starting Nginx Service
+systemctl enable nginx>/tmp/expence.log
+systemctl start nginx>/tmp/expence.log
