@@ -9,7 +9,7 @@ rm -rf /usr/share/nginx/html/
 
 
 echo Download Frontend code
-curl-s -o tmp/frontend.zip https://expence-artifacts.s3.amazonaws.com/frontend.zip
+curl -o tmp/frontend.zip https://expence-artifacts.s3.amazonaws.com/frontend.zip
 
 cd /usr/share/nginx/html
 
