@@ -1,7 +1,7 @@
 echo Installing Nginx
 dnf install nginx -y>>/tmp/expence.log
 
-echo Placing Expense Confing File in Nginx
+echo Placing Expence Confing File in Nginx
 cp expence.conf /etc/nginx/default.d/expence.con>>/tmp/expence.log
 
 echo Removing Old Nginx content
