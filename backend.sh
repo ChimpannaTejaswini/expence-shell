@@ -1,22 +1,40 @@
-curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+Source common.sh
+component=backend
+log_file=/tmp/expence.log
 
-dnf install nodejs -y
-cp backend.service /etc/systemd/system/backend.service
+echo Install NodeJS Repos
+curl -sL https://rpm.nodesource.com/setup_lts.x | bash>>$log_file
 
-useradd expense
+echo Install NodeJS
+dnf install nodejs -y>>$log_file
+
+echo Copy Backend Service File
+cp backend.service /etc/systemd/system/backend.service>>$log_file
+
+echo Add Applicton User
+useradd expense>>$log_file
+
+echo Clean App Content
+rm -rf/app >>$log_file
 mkdir /app
-curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip
 cd /app
-unzip /tmp/backend.zip
 
-npm install
 
-systemctl daemon-reload
-systemctl enable backend
-systemctl start backend
+download_and_extract
 
-dnf install mysql -y
-mysql -h mysql.rdevopsb72.website -uroot -pExpenseApp@1 < /app/schema/backend.sql
+echo Download Dependencies
+npm install>>$log_file
+
+echo Start Backend Service
+systemctl daemon-reload>>$log_file
+systemctl enable backend>>$log_file
+systemctl start backend>>$log_file
+
+echo Install MYSQL Client
+dnf install mysql -y>>$log_file
+
+echo Load Schema
+mysql -h mysql.rdevopsb72.website -uroot -pExpenseApp@1 < /app/schema/backend.sql>>$log_file
 
 
 
