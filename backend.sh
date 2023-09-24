@@ -15,10 +15,9 @@ echo Add Applicton User
 useradd expense>>$log_file
 
 echo Clean App Content
-rm -rf/app >>$log_file
+rm-rf /app >>$log_file
 mkdir /app
 cd /app
-
 
 download_and_extract
 
