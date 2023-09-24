@@ -35,11 +35,7 @@ fi
 
 echo Clean App Content
 rm -rf /app &>>$log_file
-if [$?-eq 0]; then
-  echo SUCCESS
-else
-  echo FAILED
-fi
+echo $?
 
 mkdir /app
 cd /app
@@ -49,37 +45,21 @@ download_and_extract
 
 echo Download Dependencies
 npm install &>>$log_file
-if [$? -eq 0]; then
-  echo SUCCESS
-else
-  echo FAILED
-fi
+echo $?
 
 echo Start Backend Service
 systemctl daemon-reload &>>$log_file
 systemctl enable backend &>>$log_file
 systemctl start backend &>>$log_file
-if [$? -eq 0]; then
-  echo SUCCESS
-else
-  echo FAILED
-fi
+echo $?
 
 echo Install MySQL Client
 dnf install mysql -y &>>$log_file
-if [$? -eq 0]; then
-  echo SUCCESS
-else
-  echo FAILED
-fi
+echo $?
 
 echo Load Schema
 mysql -h mysql.rdevopsb72.website -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$log_file
-if [$? -eq 0]; then
-  echo SUCCESS
-else
-  echo FAILED
-fi
+echo $?
 
 
 
