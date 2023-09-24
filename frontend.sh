@@ -10,10 +10,9 @@ cp expence.conf /etc/nginx/default.d/expence.conf >>$log_file
 
 echo Removing Old Nginx content
 rm -rf /usr/share/nginx/html/* >>$log_file
-
 cd /usr/share/nginx/html
 
-donoad_and_extract
+download_and_extract
 
 echo Starting Nginx Service
 systemctl enable nginx >>$log_file
