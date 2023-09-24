@@ -5,5 +5,5 @@ download_and_extract() {
   curl -s -o /tmp/$component.zip https://expence-artifacts.s3.amazonaws.com/$component.zip >>$log_file
 
   echo Extracting $component Code
-  unzip /tmp/$component.zip >>$log_file
+  unzip /tmp/$component.zip &>>$log_file
 }
