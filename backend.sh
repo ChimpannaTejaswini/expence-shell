@@ -12,7 +12,7 @@ echo Copy Backend Service File
 cp backend.service /etc/systemd/system/backend.service>>$log_file
 
 echo Add Applicton User
-useradd expense>>$log_file
+useradd expence>>$log_file
 
 echo Clean App Content
 rm-rf /app >>$log_file
