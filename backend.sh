@@ -15,7 +15,7 @@ echo Add Applicton User
 useradd expence>>$log_file
 
 echo Clean App Content
-rm-rf /app >>$log_file
+rm -rf /app >>$log_file
 mkdir /app
 cd /app
 
