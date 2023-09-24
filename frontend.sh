@@ -4,11 +4,11 @@ component=frontend
 echo Installing Nginx
 dnf install nginx -y &>>$log_file
 
-echo Placing Expence Confing File in Nginx
+echo Placing Expence Config File in Nginx
 cp expence.conf /etc/nginx/default.d/expence.conf &&>>$log_file
 
 echo Removing Old Nginx content
-rm-rf /usr/share/nginx/html/* &>>$log_file
+rm -rf /usr/share/nginx/html/* &>>$log_file
 
 cd /usr/share/nginx/html
 
