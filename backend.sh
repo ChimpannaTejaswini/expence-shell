@@ -3,19 +3,19 @@ component=backend
 
 echo Install NodeJS Repos
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$log_file
-stat_check()
+stat_check
 
 echo Install NodeJS
 dnf install nodejs -y &>>$log_file
-stat_check()
+stat_check
 
 echo Copy Backend Service File
 cp backend.service /etc/systemd/system/backend.service &>>$log_file
-stat_check()
+stat_check
 
 echo Add Applicton User
 useradd expence &>>$log_file
-stat_check()
+stat_check
 
 echo Clean App Content
 rm -rf /app &>>$log_file
