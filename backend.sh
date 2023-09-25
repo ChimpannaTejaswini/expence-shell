@@ -14,7 +14,10 @@ cp backend.service /etc/systemd/system/backend.service &>>$log_file
 stat_check
 
 echo Add Applicton User
-useradd expence &>>$log_file
+id expence &>>$log_file
+if [ $? -ne 0 ]; then
+ useradd expence &>>$log_file
+fi
 stat_check
 
 echo Clean App Content
