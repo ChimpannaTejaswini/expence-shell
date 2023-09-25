@@ -1,13 +1,12 @@
 source common.sh
 component=frontend
 
-
 echo Installing Nginx
 dnf install nginx -y &>>$log_file
 stat_check
 
 echo Placing Expence Config File in Nginx
-cp expence.conf /etc/nginx/default.d/expence.conf &&>>$log_file
+cp expence.conf /etc/nginx/default.d/expence.conf &>>$log_file
 stat_check
 
 echo Removing Old Nginx content
